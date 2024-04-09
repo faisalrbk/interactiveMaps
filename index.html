@@ -2,199 +2,102 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Customize ColorSlider Histogram | Sample | ArcGIS Maps SDK for JavaScript</title>
-
-    <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
-    <script type="module" src="https://js.arcgis.com/5.0/"></script>
-
-    <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-      }
-      calcite-card {
-        padding: 3px;
-        text-align: center;
-        width: 280px;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interactive Maps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-
-  <body>
-    <arcgis-map scale="577790" center="-117.8099, 34.0441">
-      <arcgis-zoom slot="top-left"></arcgis-zoom>
-      <calcite-card slot="top-right">
-        <h2>Median Household Income</h2>
-        <div id="description">
-          This app allows you to explore median household incomes in the Los Angeles Area. The
-          slider contains two lines that indicate values of interest: the federal poverty level and
-          the low-income threshold for a family of four in Los Angeles.
+  <body
+    class="m-0 min-h-screen bg-[#0D1117] text-[#c9d1d9] antialiased [font-family:'Google_Sans',sans-serif]"
+  >
+    <main
+      class="mx-auto mt-8 w-full max-w-[960px] rounded-md border border-[#30363d] bg-[#0D1117] px-5 pb-[72px] pt-10 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.7)]"
+    >
+      <div
+        class="group relative -ml-3 mb-4 border-b border-[#30363d] pb-[0.3em] pl-3"
+      >
+        <span
+          class="pointer-events-none absolute bottom-2 left-0 top-2 w-[3px] rounded bg-[#f78166] opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+        ></span>
+        <h1 class="text-[2rem] font-semibold leading-tight text-[#c9d1d9]">
+          Interactive Maps
+        </h1>
+      </div>
+      <p
+        class="-ml-3 mb-8 border-b border-[#30363d] pb-[0.3em] pl-3 leading-relaxed text-[#c9d1d9]"
+      >
+        A collection of interactive web maps built with
+        <strong>ArcGIS Maps SDK for JavaScript</strong>,
+        <strong>Esri Calcite Design System</strong>, <strong>Mapbox</strong>
+      </p>
+      <div class="text-center">
+        <div class="mt-8 flex flex-wrap justify-center gap-5">
+          <a
+            class="inline-block w-[200px] text-center font-semibold text-[#c9d1d9] no-underline hover:underline"
+            href="https://faisalrbk.github.io/interactiveMaps/1-colorSliderHistogramMap.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="thumbnails/colorSliderHistogram.png"
+              width="200"
+              height="200"
+              alt="Color Slider Histogram Map"
+              class="mb-2 block rounded-[2px] border border-[#30363d]"
+            />
+            Color Slider Histogram Map
+          </a>
+       
         </div>
-        <arcgis-slider-color-legacy precision="2"></arcgis-slider-color-legacy>
-      </calcite-card>
-    </arcgis-map>
-
-    <script type="module">
-      const [Map, FeatureLayer, colorRendererCreator, colorSymbology, histogram, Color, intl] =
-        await $arcgis.import([
-          "@arcgis/core/Map.js",
-          "@arcgis/core/layers/FeatureLayer.js",
-          "@arcgis/core/smartMapping/renderers/color.js",
-          "@arcgis/core/smartMapping/symbology/color.js",
-          "@arcgis/core/smartMapping/statistics/histogram.js",
-          "@arcgis/core/Color.js",
-          "@arcgis/core/intl.js",
-        ]);
-
-      const colorSlider = document.querySelector("arcgis-slider-color-legacy");
-      await colorSlider.componentOnReady();
-
-      // listen to arcgisThumbChange and arcgisThumbDrag events
-      // update the layer's renderer to match the slider's color stops
-      colorSlider.addEventListener("arcgisThumbChange", updateRendererFromSlider);
-      colorSlider.addEventListener("arcgisThumbDrag", updateRendererFromSlider);
-      colorSlider.addEventListener("arcgisPropertyChange", updateRendererFromSlider);
-
-      const layer = new FeatureLayer({
-        portalItem: {
-          id: "340a8efc331f4cd59fecbc4ab8e2a311",
-        },
-        definitionExpression: "MEDHINC_CY > 0",
-        visible: false,
-      });
-
-      const viewElement = document.querySelector("arcgis-map");
-      viewElement.map = new Map({
-        basemap: {
-          portalItem: {
-            id: "3582b744bba84668b52a16b0b6942544",
-          },
-        },
-        layers: [layer],
-      });
-
-      // configure parameters for the color renderer generator
-      // the layer must be specified along with a field name
-      // or arcade expression. The basemap and other properties determine
-      // the appropriate default color scheme.
-      const redAndGreenScheme = colorSymbology.getSchemeByName({
-        basemap: viewElement.map.basemap,
-        geometryType: "polygon",
-        theme: "above-and-below",
-        name: "Red and Green 4",
-      });
-
-      // flip the red and green scheme so green is on top
-      const moneyScheme = colorSymbology.flipColors(redAndGreenScheme);
-
-      const colorParams = {
-        view: viewElement.view,
-        layer: layer,
-        field: "MEDHINC_CY",
-        theme: "above-and-below",
-        colorScheme: moneyScheme,
-      };
-
-      const rendererResult = await colorRendererCreator.createContinuousRenderer(colorParams);
-
-      // set the renderer to the layer and add it to the map
-      const vv = rendererResult.visualVariable;
-      layer.renderer = rendererResult.renderer;
-      layer.visible = true;
-
-      const histogramResult = await histogram({
-        ...colorParams,
-        numBins: 60,
-      });
-
-      // create reference to histogram bar elements for updating
-      // their style as the user drags slider thumbs
-      const bars = [];
-      const histogramConfig = {
-        average: null,
-        barCreatedFunction: (index, element) => {
-          const bin = histogramResult.bins[index];
-          const midValue = (bin.maxValue - bin.minValue) / 2 + bin.minValue;
-          const color = getColorFromValue(colorSlider.stops, midValue);
-          element.setAttribute("fill", color.toHex());
-          bars.push(element);
-        },
-        bins: histogramResult.bins,
-        dataLines: [
-          { label: "HUD low income", value: 83500 },
-          { label: "Fed poverty line", value: 25750 },
-        ],
-        standardDeviation: null,
-      };
-      colorSlider.updateFromRendererResult(rendererResult, histogramResult);
-      colorSlider.histogramConfig = histogramConfig;
-      colorSlider.labelFormatFunction = (value) => {
-        return intl.formatNumber(value, {
-          style: "currency",
-          currency: "USD",
-          currencyDisplay: "symbol",
-          maximumFractionDigits: 0,
-          minimumFractionDigits: 0,
-        });
-      };
-
-      function updateRendererFromSlider() {
-        const renderer = layer.renderer.clone();
-        const colorVariable = renderer.visualVariables[0].clone();
-        colorVariable.stops = colorSlider.stops;
-        renderer.visualVariables = [colorVariable];
-        layer.renderer = renderer;
-
-        bars.forEach((bar, index) => {
-          const bin = colorSlider.histogramConfig.bins[index];
-          if (bin) {
-            const midValue = (bin.maxValue - bin.minValue) / 2 + bin.minValue;
-            const color = getColorFromValue(colorSlider.stops, midValue);
-            bar.setAttribute("fill", color.toHex());
-          }
-        });
-      }
-
-      // infers the color for a given value
-      // based on the stops from a ColorVariable
-      function getColorFromValue(stops, value) {
-        let minStop = stops[0];
-        let maxStop = stops[stops.length - 1];
-
-        const minStopValue = minStop.value;
-        const maxStopValue = maxStop.value;
-
-        if (value < minStopValue) {
-          return minStop.color;
-        }
-
-        if (value > maxStopValue) {
-          return maxStop.color;
-        }
-
-        const exactMatches = stops.filter((stop) => {
-          return stop.value === value;
-        });
-
-        if (exactMatches.length > 0) {
-          return exactMatches[0].color;
-        }
-
-        minStop = null;
-        maxStop = null;
-        stops.forEach((stop, i) => {
-          if (!minStop && !maxStop && stop.value >= value) {
-            minStop = stops[i - 1];
-            maxStop = stop;
-          }
-        });
-
-        const weightedPosition = (value - minStop.value) / (maxStop.value - minStop.value);
-
-        return Color.blendColors(minStop.color, maxStop.color, weightedPosition);
-      }
-    </script>
+      </div>
+    </main>
+    <div
+      class="fixed bottom-3 left-4 inline-flex items-center gap-1 text-[0.9rem] text-[#8b949e]"
+    >
+      <span>credit:</span>
+      <a
+        class="inline-flex items-center gap-1 leading-none text-[#58a6ff] no-underline hover:underline"
+        href="https://github.com/faisalrbk"
+        target="_blank"
+        rel="noopener noreferrer"
+        >faisal hameed
+        <svg
+          class="h-4 w-4 shrink-0 -translate-y-px"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          role="img"
+        >
+          <path
+            fill="#0c7cfc"
+            fill-rule="evenodd"
+            stroke="#0c7cfc"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            stroke-width="1.5"
+            d="M20.4 13.1c.8 1 .3 2.5-.9 2.9-.8.2-1.3 1-1.3 1.8 0 1.3-1.2 2.2-2.5 1.8-.8-.3-1.7 0-2.1.7-.7 1.1-2.3 1.1-3 0-.5-.7-1.3-1-2.1-.7-1.4.4-2.6-.6-2.6-1.8 0-.8-.5-1.6-1.3-1.8-1.2-.4-1.7-1.8-.9-2.9.5-.7.5-1.6 0-2.2-.9-1-.4-2.5.9-2.9.8-.2 1.3-1 1.3-1.8C5.9 5 7.1 4 8.3 4.5c.8.3 1.7 0 2.1-.7.7-1.1 2.3-1.1 3 0 .5.7 1.3 1 2.1.7 1.4-.5 2.6.5 2.6 1.7 0 .8.5 1.6 1.3 1.8 1.2.4 1.7 1.8.9 2.9-.4.6-.4 1.6.1 2.2z"
+            clip-rule="evenodd"
+          ></path>
+          <path
+            stroke="#ffffff"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            stroke-width="1.5"
+            d="M15.5 9.7L11 14.3l-2.5-2.5"
+          ></path>
+        </svg>
+      </a>
+    </div>
+    <div class="fixed bottom-3 right-4 text-[0.9rem] text-[#8b949e]">
+      copyright 2024-26
+    </div>
   </body>
 </html>
