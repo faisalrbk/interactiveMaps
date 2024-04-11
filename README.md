@@ -1,26 +1,33 @@
 # Interactive Maps
 
 A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript**, **Esri Calcite Design System**, **Mapbox**
-
-## Maps
-
-<div align="center">
-  <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
-    <a href="https://faisalrbk.github.io/interactiveMaps/1-colorSliderHistogramMap.html" style="text-decoration: none; color: inherit; width: 200px;">
-      <img src="thumbnails/colorSliderHistogram.png" width="200" height="200" alt="Color Slider Histogram Map"/><br/>
-      Color Slider Histogram Map
-    </a>
-    <a href="https://faisalrbk.github.io/interactiveMaps/1-colorSliderHistogramMap.html" style="text-decoration: none; color: inherit; width: 200px;">
-      <img src="thumbnails/colorSliderHistogram.png" width="200" height="200" alt="Color Slider Histogram Map"/><br/>
-      Color Slider Histogram Map
-    </a>
-    <a href="https://faisalrbk.github.io/interactiveMaps/1-colorSliderHistogramMap.html" style="text-decoration: none; color: inherit; width: 200px;">
-      <img src="thumbnails/colorSliderHistogram.png" width="200" height="200" alt="Color Slider Histogram Map"/><br/>
-      Color Slider Histogram Map
-    </a>
-    <a href="https://faisalrbk.github.io/interactiveMaps/1-colorSliderHistogramMap.html" style=" color: inherit; width: 200px;">
-      <img src="thumbnails/colorSliderHistogram.png" width="200" height="200" alt="Color Slider Histogram Map"/><br/>
-      Color Slider Histogram Map
-    </a>
-  </div>
-</div>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://faisalrbk.github.io/interactiveMaps/1-colorSliderHistogramMap.html">
+        <img src="thumbnails/colorSliderHistogram.png" width="200" height="200" alt="Color Slider Histogram Map"/>
+        <br/>Color Slider Histogram Map
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://faisalrbk.github.io/interactiveMaps/2-dotDensityVisulizationMap.html">
+        <img src="thumbnails/1dotdensityviuslization.png" width="200" height="200" alt="Dot Density Visualization Map"/>
+        <br/>Dot Density Visualization Map
+      </a>
+    </td>
+    <td align="center">
+      <!-- 3rd map -->
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <!-- 4th map -->
+    </td>
+    <td align="center">
+      <!-- 5th map -->
+    </td>
+    <td align="center">
+      <!-- 6th map -->
+    </td>
+  </tr>
+</table>
