@@ -16,7 +16,10 @@ A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript
       </a>
     </td>
     <td align="center">
-      <!-- 3rd map -->
+      <a href="https://faisalrbk.github.io/interactiveMaps/3-animateColorVisulization.html">
+        <img src="thumbnails/animatecolorvisulization.png" width="200" height="200" alt="Dot Density Visualization Map"/>
+        <br/>Dot Density Visualization Map
+      </a>
     </td>
   </tr>
   <tr>
