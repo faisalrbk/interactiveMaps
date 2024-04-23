@@ -28,6 +28,10 @@ A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript
         <img src="thumbnails/featureEffect.png" width="200" height="200" alt="Dot Density Visualization Map"/>
         <br/>2D FeatureEffect on Chloropleth Map
       </a>
+       <a href="https://faisalrbk.github.io/interactiveMaps/5-elevationLayer.html">
+        <img src="thumbnails/elevationLayer.png" width="200" height="200" alt="Dot Density Visualization Map"/>
+        <br/>Custom ElevationLayer | exaggerating elevation
+      </a>
     </td>
     <td align="center">
       <!-- 5th map -->
