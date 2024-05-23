@@ -1,6 +1,7 @@
 # Interactive Maps
 
-A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript**, **Esri Calcite Design System**, **Mapbox**
+A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript**, **Esri Calcite Design System**,
+
 <table>
   <tr>
     <td align="center">
@@ -28,16 +29,19 @@ A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript
         <img src="thumbnails/featureEffect.png" width="200" height="200" alt="Dot Density Visualization Map"/>
         <br/>2D FeatureEffect on Chloropleth Map
       </a>
+    </td>
+    <td align="center">
        <a href="https://faisalrbk.github.io/interactiveMaps/5-elevationLayer.html">
         <img src="thumbnails/elevationLayer.png" width="200" height="200" alt="Dot Density Visualization Map"/>
         <br/>Custom ElevationLayer | exaggerating elevation
       </a>
     </td>
     <td align="center">
-      <!-- 5th map -->
+       <a href="https://faisalrbk.github.io/interactiveMaps/6-buildingMap.html">
+        <img src="thumbnails/buildingMap.png" width="200" height="200" alt="Building Map"/>
+        <br/>Extrude building footprints based on real world heights
+      </a>
     </td>
-    <td align="center">
-      <!-- 6th map -->
-    </td>
+   
   </tr>
 </table>
