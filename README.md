@@ -42,6 +42,13 @@ A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript
         <br/>Extrude building footprints based on real world heights
       </a>
     </td>
-   
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://faisalrbk.github.io/interactiveMaps/7-3dBuildings.html">
+        <img src="thumbnails/3dBuildings.png" width="200" height="200" alt="3D Buildings"/>
+        <br/>thematic bivariate visualizations of 3D Object SceneLayers.
+      </a>
+    </td>
   </tr>
 </table>
