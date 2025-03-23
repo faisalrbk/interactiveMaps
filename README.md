@@ -50,5 +50,12 @@ A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript
         <br/>thematic bivariate visualizations of 3D Object SceneLayers.
       </a>
     </td>
+      <td align="center">
+      <a href="https://faisalrbk.github.io/interactiveMaps/9-heatmap.html">
+        <img src="thumbnails/heatmap.png" width="200" height="200" alt="Heatmap Visualization of Earthquakes"/>
+        <br/>Heatmap Visualization of Earthquakes
+      </a>
+    </td>
   </tr>
+ 
 </table>
