@@ -56,6 +56,12 @@ A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript
         <br/>Heatmap Visualization of Earthquakes
       </a>
     </td>
+    <td align="center">
+      <a href="https://faisalrbk.github.io/interactiveMaps/10-swipeLayers.html">
+        <img src="thumbnails/swipeLayers.png" width="200" height="200" alt="Swipe Layers"/>
+        <br/>Swipe Layers on Map
+      </a>
+    </td>
   </tr>
  
 </table>
