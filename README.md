@@ -63,5 +63,13 @@ A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript
       </a>
     </td>
   </tr>
+    <tr>
+    <td align="center">
+      <a href="https://faisalrbk.github.io/interactiveMaps/8-animateLayer.html">
+        <img src="thumbnails/animateLayer.png" width="200" height="200" alt="Animate layer view effect"/>
+        <br/>Animate layer view effect
+      </a>
+    </td>
+  </tr>
  
 </table>
