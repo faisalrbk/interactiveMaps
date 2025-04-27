@@ -70,6 +70,12 @@ A collection of interactive web maps built with **ArcGIS Maps SDK for JavaScript
         <br/>Animate layer view effect
       </a>
     </td>
+      <td align="center">
+        <a href="https://faisalrbk.github.io/interactiveMaps/11-continousColor.html">
+          <img src="thumbnails/continousColor.png" width="200" height="200" alt="Continuous Choropleth Map"/>
+          <br/>Continuous Choropleth Map
+        </a>
+      </td>
   </tr>
  
 </table>
